@@ -1,0 +1,143 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 3D card flip — perspective on the parent, rotation+preserve-3d on the
+   rotating element (set inline in CardPreview), faces stacked absolutely. */
+.card-3d {
+  perspective: 1600px;
+}
+
+.card-face {
+  position: absolute;
+  inset: 0;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+/* Custom range slider */
+input[type='range'] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 6px;
+  border-radius: 999px;
+  background: #e2e8f0;
+  outline: none;
+}
+.dark input[type='range'] {
+  background: #334155;
+}
+
+input[type='range']::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0f172a;
+  cursor: pointer;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.15s ease;
+}
+.dark input[type='range']::-webkit-slider-thumb {
+  background: #e2e8f0;
+  border-color: #1e293b;
+}
+
+input[type='range']::-webkit-slider-thumb:hover {
+  transform: scale(1.15);
+}
+
+input[type='range']::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #0f172a;
+  cursor: pointer;
+  border: 3px solid #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.dark input[type='range']::-moz-range-thumb {
+  background: #e2e8f0;
+  border-color: #1e293b;
+}
+
+/* Form inputs */
+.input {
+  width: 100%;
+  padding: 0.55rem 0.7rem;
+  border-radius: 0.5rem;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  font-size: 0.875rem;
+  color: #0f172a;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, background 0.2s ease;
+}
+.input:focus {
+  outline: none;
+  border-color: #0f172a;
+  box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+}
+.input::placeholder {
+  color: #94a3b8;
+}
+.dark .input {
+  background: #1e293b;
+  border-color: #334155;
+  color: #e2e8f0;
+}
+.dark .input:focus {
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+.dark .input::placeholder {
+  color: #64748b;
+}
+
+/* Custom scrollbar for the side panel */
+.panel-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.panel-scroll::-webkit-scrollbar-track {
+  background: transparent;
+}
+.panel-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 999px;
+}
+.panel-scroll::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+.dark .panel-scroll::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+.dark .panel-scroll::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Smooth theme transition */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.2s;
+  transition-timing-function: ease;
+}
